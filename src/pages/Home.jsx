@@ -69,45 +69,87 @@ function Home() {
 
   return (
       <div>
-        {/* Hero Section with Blue Gradient */}
-        <section className="relative h-screen flex items-center bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600">
-          {/* Animated Background Elements */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-            <div className="absolute top-40 -left-40 w-80 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
-            <div className="absolute -bottom-40 left-1/2 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+        {/* Hero Section with Enhanced Blue Gradient */}
+        <section className="relative h-screen flex items-center bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 overflow-hidden">
+          {/* Animated Background Pattern */}
+          <div className="absolute inset-0">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_70%)]"></div>
+            <div className="absolute inset-0 bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0deg,rgba(59,130,246,0.05)_180deg,transparent_360deg)] animate-spin" style={{animationDuration: '20s'}}></div>
           </div>
 
-          <div className="container mx-auto px-4 z-10">
+          {/* Floating Geometric Elements */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-400 rounded-full opacity-60 animate-ping" style={{animationDelay: '0s', animationDuration: '3s'}}></div>
+            <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-cyan-400 rounded-full opacity-60 animate-ping" style={{animationDelay: '1s', animationDuration: '4s'}}></div>
+            <div className="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-blue-300 rounded-full opacity-60 animate-ping" style={{animationDelay: '2s', animationDuration: '3.5s'}}></div>
+            <div className="absolute top-1/2 left-1/6 w-1 h-1 bg-indigo-400 rounded-full opacity-60 animate-ping" style={{animationDelay: '0.5s', animationDuration: '4s'}}></div>
+            <div className="absolute bottom-1/4 right-1/4 w-2 h-2 bg-cyan-300 rounded-full opacity-40 animate-ping" style={{animationDelay: '1.5s', animationDuration: '3s'}}></div>
+
+            {/* Subtle Grid Pattern */}
+            <div className="absolute inset-0 opacity-5" style={{
+              backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+              backgroundSize: '50px 50px'
+            }}></div>
+          </div>
+
+          {/* Moving Light Rays */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-blue-400/10 via-transparent to-transparent rotate-12 animate-pulse" style={{animationDuration: '4s'}}></div>
+            <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-cyan-400/10 via-transparent to-transparent -rotate-12 animate-pulse" style={{animationDuration: '6s', animationDelay: '2s'}}></div>
+          </div>
+
+          <div className="container mx-auto px-4 z-10 relative">
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, ease: "easeOut" }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
                 className="max-w-4xl mx-auto text-center"
             >
-              <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
+              <motion.h1
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1.4, delay: 0.2, ease: "easeOut" }}
+                  className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight"
+              >
                 We Code Your Vision
-                <span className="block bg-gradient-to-r from-blue-300 to-cyan-300 bg-clip-text text-transparent">
-                into Reality
-              </span>
-              </h1>
-              <p className="text-xl md:text-2xl text-blue-100 mb-12 max-w-3xl mx-auto leading-relaxed">
+                <motion.span
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
+                    className="block bg-gradient-to-r from-cyan-300 via-blue-300 to-indigo-300 bg-clip-text text-transparent animate-pulse"
+                    style={{animationDuration: '3s'}}
+                >
+                  into Reality
+                </motion.span>
+              </motion.h1>
+              <motion.p
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
+                  className="text-xl md:text-2xl text-blue-100 mb-12 max-w-3xl mx-auto leading-relaxed"
+              >
                 Transform your ideas into powerful digital solutions with our expert team of developers and designers.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              </motion.p>
+              <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 1, ease: "easeOut" }}
+                  className="flex flex-col sm:flex-row gap-6 justify-center"
+              >
                 <Link
                     to="/contact"
-                    className="px-10 py-4 bg-white text-blue-800 font-bold text-lg rounded-2xl hover:bg-blue-50 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl"
+                    className="group px-10 py-4 bg-white text-blue-900 font-bold text-lg rounded-2xl hover:bg-blue-50 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl relative overflow-hidden"
                 >
-                  Get Started
+                  <span className="relative z-10">Get Started</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
                 </Link>
                 <Link
                     to="/services"
-                    className="px-10 py-4 bg-transparent border-2 border-white text-white font-bold text-lg rounded-2xl hover:bg-white hover:text-blue-800 transform hover:scale-105 transition-all duration-300"
+                    className="group px-10 py-4 bg-transparent border-2 border-white/60 text-white font-bold text-lg rounded-2xl hover:bg-white/10 hover:border-white transform hover:scale-105 transition-all duration-300 backdrop-blur-sm"
                 >
-                  Explore Services
+                  <span className="group-hover:text-cyan-200 transition-colors duration-300">Explore Services</span>
                 </Link>
-              </div>
+              </motion.div>
             </motion.div>
           </div>
         </section>
