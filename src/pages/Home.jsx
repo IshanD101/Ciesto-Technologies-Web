@@ -1,37 +1,38 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-const services = [
+// SVG Icons as React components
+const ShoppingCartIcon = () => (
+    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+            d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.8 5.2A2 2 0 007 21h10a2 2 0 002-2v0a2 2 0 00-2-2H7" />
+    </svg>
+);
+
+const SettingsIcon = () => (
+    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+    </svg>
+);
+
+const keyServices = [
   {
-    title: 'Web Development',
-    description: 'Custom websites and web applications built with modern technologies.',
-    image: 'https://images.pexels.com/photos/270404/pexels-photo-270404.jpeg?auto=compress&cs=tinysrgb&w=600'
+    title: 'Point of Sale (POS) Systems',
+    description: 'Streamline your business operations with our advanced POS solutions. Real-time analytics, inventory management, and seamless payment integration.',
+    features: ['Real-time Analytics', 'Inventory Management', 'Payment Integration'],
+    icon: ShoppingCartIcon,
+    color: 'from-blue-500 to-cyan-500',
+    bgColor: 'bg-blue-50 dark:bg-blue-900/20'
   },
   {
-    title: 'Mobile Apps',
-    description: 'Native and cross-platform mobile applications for iOS and Android.',
-    image: 'https://images.pexels.com/photos/1092644/pexels-photo-1092644.jpeg?auto=compress&cs=tinysrgb&w=600'
-  },
-  {
-    title: 'SaaS Platforms',
-    description: 'Scalable software-as-a-service solutions for your business needs.',
-    image: 'https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=600'
-  },
-  {
-    title: 'UI/UX Design',
-    description: 'User-centered design solutions that enhance user experience.',
-    image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=600'
-  },
-  {
-    title: 'Custom Software',
-    description: 'Tailored software solutions to meet your specific requirements.',
-    image: 'https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=600'
-  },
-  {
-    title: 'Tech Consulting',
-    description: 'Expert guidance on technology strategy and implementation.',
-    image: 'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=600'
+    title: 'Custom Software Solutions',
+    description: 'Bespoke software designed for your unique business challenges. Scalable solutions that grow with your business needs.',
+    features: ['Custom Development', 'System Integration', 'Ongoing Support'],
+    icon: SettingsIcon,
+    color: 'from-indigo-500 to-purple-500',
+    bgColor: 'bg-indigo-50 dark:bg-indigo-900/20'
   }
 ];
 
@@ -136,19 +137,17 @@ function Home() {
                   transition={{ duration: 1, delay: 1, ease: "easeOut" }}
                   className="flex flex-col sm:flex-row gap-6 justify-center"
               >
-                <Link
-                    to="/contact"
+                <button
                     className="group px-10 py-4 bg-white text-blue-900 font-bold text-lg rounded-2xl hover:bg-blue-50 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl relative overflow-hidden"
                 >
                   <span className="relative z-10">Get Started</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-                </Link>
-                <Link
-                    to="/services"
+                </button>
+                <button
                     className="group px-10 py-4 bg-transparent border-2 border-white/60 text-white font-bold text-lg rounded-2xl hover:bg-white/10 hover:border-white transform hover:scale-105 transition-all duration-300 backdrop-blur-sm"
                 >
                   <span className="group-hover:text-cyan-200 transition-colors duration-300">Explore Services</span>
-                </Link>
+                </button>
               </motion.div>
             </motion.div>
           </div>
@@ -171,8 +170,8 @@ function Home() {
           </svg>
         </div>
 
-        {/* Services Section */}
-        <section className="py-20 bg-gray-50 dark:bg-gray-800 relative">
+        {/* Key Services Section */}
+        <section className="py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-blue-900/10 dark:to-indigo-900/10 relative">
           <div className="container mx-auto px-4">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -181,42 +180,144 @@ function Home() {
                 viewport={{ once: true }}
                 className="text-center mb-16"
             >
+              <p className="text-blue-600 dark:text-blue-400 font-semibold text-lg mb-4 tracking-wide">
+                OUR SPECIALTIES
+              </p>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-                Our Services
+                Solutions That Drive Success
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                Comprehensive solutions for your digital needs
+                We focus on two core areas where we excel at delivering exceptional results
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {services.map((service, index) => (
+            <div className="space-y-16">
+              {keyServices.map((service, index) => (
                   <motion.div
                       key={service.title}
-                      initial={{ opacity: 0, y: 30 }}
+                      initial={{ opacity: 0, y: 50 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                      transition={{ duration: 0.8, delay: index * 0.2 }}
                       viewport={{ once: true }}
-                      className="group bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
+                      className={`${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} flex flex-col lg:flex-row items-center gap-12 lg:gap-16`}
                   >
-                    <div className="h-48 overflow-hidden">
-                      <img
-                          src={service.image}
-                          alt={service.title}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                      />
-                    </div>
-                    <div className="p-8">
-                      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                        {service.title}
-                      </h3>
-                      <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    {/* Content Side */}
+                    <div className="flex-1 space-y-6">
+                      <div className="flex items-center gap-4">
+                        <div className={`p-4 rounded-2xl bg-gradient-to-r ${service.color} shadow-lg`}>
+                          <service.icon className="w-8 h-8 text-white" />
+                        </div>
+                        <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
+                          {service.title}
+                        </h3>
+                      </div>
+
+                      <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
                         {service.description}
                       </p>
+
+                      <div className="flex flex-wrap gap-3">
+                        {service.features.map((feature, featureIndex) => (
+                            <motion.div
+                                key={feature}
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.5, delay: (index * 0.2) + (featureIndex * 0.1) }}
+                                viewport={{ once: true }}
+                                className="flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-gray-800 shadow-sm border border-gray-200 dark:border-gray-700"
+                            >
+                              <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${service.color}`}></div>
+                              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                                {feature}
+                              </span>
+                            </motion.div>
+                        ))}
+                      </div>
+
+                      <motion.div
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                      >
+                        <button
+                            className={`inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r ${service.color} text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300`}
+                        >
+                          Learn More
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </button>
+                      </motion.div>
+                    </div>
+
+                    {/* Visual Side */}
+                    <div className="flex-1 flex justify-center">
+                      <motion.div
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.8, delay: index * 0.2 }}
+                          viewport={{ once: true }}
+                          className={`relative ${service.bgColor} p-12 rounded-3xl shadow-2xl w-full max-w-md`}
+                      >
+                        {/* Decorative Elements */}
+                        <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-gradient-to-r from-white/20 to-white/10 backdrop-blur-sm"></div>
+                        <div className="absolute bottom-4 left-4 w-6 h-6 rounded-full bg-gradient-to-r from-white/15 to-white/5 backdrop-blur-sm"></div>
+
+                        {/* Main Icon */}
+                        <div className={`mx-auto w-32 h-32 rounded-3xl bg-gradient-to-r ${service.color} flex items-center justify-center shadow-xl mb-6`}>
+                          <service.icon className="w-16 h-16 text-white" />
+                        </div>
+
+                        {/* Stats/Numbers */}
+                        <div className="grid grid-cols-2 gap-4 text-center">
+                          <div className="p-4 bg-white/50 dark:bg-gray-800/50 rounded-2xl backdrop-blur-sm">
+                            <div className="text-2xl font-bold text-gray-900 dark:text-white">50+</div>
+                            <div className="text-sm text-gray-600 dark:text-gray-400">Projects</div>
+                          </div>
+                          <div className="p-4 bg-white/50 dark:bg-gray-800/50 rounded-2xl backdrop-blur-sm">
+                            <div className="text-2xl font-bold text-gray-900 dark:text-white">99%</div>
+                            <div className="text-sm text-gray-600 dark:text-gray-400">Success</div>
+                          </div>
+                        </div>
+
+                        {/* Floating Elements */}
+                        <div className="absolute -top-2 -left-2 w-4 h-4 bg-blue-400 rounded-full opacity-60 animate-ping"></div>
+                        <div className="absolute -bottom-2 -right-2 w-3 h-3 bg-cyan-400 rounded-full opacity-60 animate-ping" style={{animationDelay: '1s'}}></div>
+                      </motion.div>
                     </div>
                   </motion.div>
               ))}
             </div>
+
+            {/* Call to Action within Services */}
+            <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="mt-16 text-center"
+            >
+              <div className="bg-gradient-to-r from-blue-600 to-cyan-600 rounded-3xl p-8 md:p-12 text-white shadow-2xl">
+                <h3 className="text-2xl md:text-3xl font-bold mb-4">
+                  Ready to Get Started?
+                </h3>
+                <p className="text-lg mb-6 opacity-90 max-w-xl mx-auto">
+                  Let's discuss how we can help transform your business with our specialized solutions.
+                </p>
+                <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                >
+                  <button
+                      className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-600 font-bold text-lg rounded-2xl hover:bg-blue-50 transition-all duration-300 shadow-lg"
+                  >
+                    Contact Us Today
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </button>
+                </motion.div>
+              </div>
+            </motion.div>
           </div>
         </section>
 
